@@ -7,13 +7,13 @@ function App() {
     // Fetch from the live backend
     fetch(`${import.meta.env.VITE_API_URL}/health`)
       .then(res => res.json())
-      .then(data => setStatus(`Backend says: ${data.message}`))
+      .then(data => setStatus(`Backend Status: ${data.message}`))
       .catch(err => setStatus(`Error: ${err.message}`))
   }, [])
 
   return (
     <div style={{ padding: "50px", fontFamily: "sans-serif", textAlign: "center" }}>
-      <h1>Secure Chat Portfolio</h1>
+      <h1>Secure Chat</h1>
       <div style={{ 
         padding: "20px", 
         border: "2px solid #333", 
