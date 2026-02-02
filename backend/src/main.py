@@ -33,5 +33,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str, user_name: str)
             await manager.broadcast(room_id, f"{user_name}: {data}")
             
     except WebSocketDisconnect:
-        # Handle disconnect (optional: cleanup)
-        pass
+        # Stop the background task so it doesn't keep running forever
+        consumer_task.cancel()
+        # Optional: Broadcast that user left
+        # await manager.broadcast(room_id, f"System: {user_name} left the chat.")
